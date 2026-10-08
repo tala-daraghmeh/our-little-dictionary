@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Little Dictionary</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=Patrick+Hand&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+<body>
+
+    <div class="book">
+
+        <div class="book-cover">
+
+            <h1>Our Little Dictionary</h1>
+
+            <p>In the club we all fam</p>
+
+            <a href="/">
+                Add a new word
+            </a>
+
+        </div>
+
+
+        <div class="dictionary-pages">
+
+            <h1>Our Dictionary</h1>
+
+
+            <form
+                action="/search"
+                method="GET"
+                class="search-box"
+            >
+
+                <input
+                    type="text"
+                    name="q"
+                    placeholder="Search"
+                >
+
+                <button type="submit">
+                    Search
+                </button>
+
+            </form>
+
+
+            <div class="word-page">
+
+                <h2>{{ word[1] }}</h2>
+
+                <p>{{ word[2] }}</p>
+
+                <div class="word-actions">
+
+                    <a href="/edit/{{ word[0] }}">
+                        Edit
+                    </a>
+
+                    <form
+                        action="/delete/{{ word[0] }}"
+                        method="POST"
+                    >
+
+                        <button type="submit">
+                            Delete
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <div class="page-navigation">
+
+                {% if page > 1 %}
+
+                    <a href="/words?page={{ page - 1 }}">
+                        ← Previous
+                    </a>
+
+                {% endif %}
+
+
+                <span>
+                    {{ page }} / {{ total_pages }}
+                </span>
+
+
+                {% if page < total_pages %}
+
+                    <a href="/words?page={{ page + 1 }}">
+                        Next →
+                    </a>
+
+                {% endif %}
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

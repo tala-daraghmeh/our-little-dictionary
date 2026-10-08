@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Little Dictionary</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+</head>
+
+<body class="landing-page">
+
+    <div class="landing-card">
+        <h1>Our Little Dictionary</h1>
+        <p class="landing-subtitle">In the club we all fam</p>
+
+        <form action="/add" method="POST" class="landing-form">
+            <input type="text" name="word" placeholder="الكلمة" required>
+            <textarea name="note" placeholder="المعنى"></textarea>
+            <button type="submit">Add Word</button>
+        </form>
+
+        <a href="/words" class="landing-link">Open the dictionary →</a>
+    </div>
+
+</body>
+</html>
